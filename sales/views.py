@@ -10,7 +10,7 @@ class SaleCreateView(CreateView):
     model = Sale
     form_class = SaleForm
     template_name = "sales/add.html"
-    success_url = reverse_lazy('add')
+    success_url = reverse_lazy('sales:add')
 
 def load_items(request):
     category_id = request.GET.get('category')

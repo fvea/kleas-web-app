@@ -9,12 +9,12 @@
     <table>
       {{ form.as_table }}
     </table>
-    <button type="submit">Save</button>
+    <input type="submit" value="Save">
   </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
-    $("#id_category").change(function () {
+    $("#category-dropdown").change(function () {
       var url = $("#saleForm").attr("data-items-url");  // get the url of the `load_items` view
       var categoryId = $(this).val();                   // get the selected category ID from the HTML input
 
@@ -24,7 +24,7 @@
           'category': categoryId                        // add the category id to the GET parameters
         },
         success: function (data) {                      // `data` is the return of the `load_items' view function
-          $("#id_item").html(data);                     // replace the contents of the items input with the data that came from the server
+          $("#item-dropdown").html(data);                     // replace the contents of the items input with the data that came from the server
         }
       });
 
