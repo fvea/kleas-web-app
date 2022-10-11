@@ -6,9 +6,11 @@
 
   <form method="post" id="saleForm" data-items-url="{% url 'sales:ajax_load_items' %}" novalidate>
     {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
+    
+    {% for field in form %}
+      <p class="price_txt">{{field.label_tag}}</p> {{field}}
+    {% endfor %}
+
     <input type="submit" value="Save">
   </form>
 
