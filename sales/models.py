@@ -17,7 +17,7 @@ class Item(models.Model):
 
 class Sale(models.Model):
     sales_id = models.AutoField(primary_key=True)
-    price = models.FloatField()
+    price = models.FloatField(validators=[MinValueValidator(limit_value=0)])
     quantity = models.IntegerField(validators=[MinValueValidator(limit_value=1)])
     purchase_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
