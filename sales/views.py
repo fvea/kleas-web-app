@@ -17,12 +17,3 @@ def load_items(request):
     items = Item.objects.filter(category_id=category_id).order_by('item')
     print(items)
     return render(request, 'sales/item_options.html', context={'items': items})
-
-# class PersonListView(ListView):
-#     model = Person
-#     context_object_name = 'people'
-
-# class PersonUpdateView(UpdateView):
-#     model = Person
-#     fields = ('name', 'birthdate', 'country', 'city')
-#     success_url = reverse_lazy('person_changelist')
