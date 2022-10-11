@@ -6,6 +6,14 @@ class SaleForm(forms.ModelForm):
         model = Sale
         fields = ('price', 'quantity', 'category', 'item')
 
+        # Sale Form HTML Widgets Reference
+        widgets = {
+            "price": forms.NumberInput(attrs={"id": "price-num-input", "class": "num-input", "value": "0.0"}),
+            "quantity": forms.NumberInput(attrs={"id": "quantity-num-input", "class": "num-input", "value": "1"}),
+            "category": forms.Select(attrs={"id": "category-dropdown", "class": "dropdown"}),
+            "item": forms.Select(attrs={"id": "item-dropdown", "class": "dropdown"})
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['item'].queryset = Item.objects.none()
