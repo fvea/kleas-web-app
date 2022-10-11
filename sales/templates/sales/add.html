@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>Add Sale Transaction Form</h2>
+
+  <form method="post" id="saleForm" data-items-url="{% url 'sales:ajax_load_items' %}" novalidate>
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Save">
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#category-dropdown").change(function () {
+      var url = $("#saleForm").attr("data-items-url");  // get the url of the `load_items` view
+      var categoryId = $(this).val();                   // get the selected category ID from the HTML input
+
+      $.ajax({                                          // initialize an AJAX request
+        url: url,                                       // set the url of the request (= localhost:8000/hr/ajax/load-items/)
+        data: {
+          'category': categoryId                        // add the category id to the GET parameters
+        },
+        success: function (data) {                      // `data` is the return of the `load_items' view function
+          $("#item-dropdown").html(data);                     // replace the contents of the items input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
+{% endblock %}
