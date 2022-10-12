@@ -23,12 +23,12 @@ class SaleForm(forms.ModelForm):
             "category": forms.Select(
                 attrs={
                     "id": "category-dropdown", 
-                    "class": "form-control"}
+                    "class": "form-select"}
                     ),
             "item": forms.Select(
                 attrs={
                     "id": "item-dropdown", 
-                    "class": "form-control"}
+                    "class": "form-select"}
                     )
         }
 
