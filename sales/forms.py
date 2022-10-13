@@ -19,10 +19,10 @@ class SaleForm(forms.ModelForm):
                 attrs={
                     "id": "quantity-num-input", 
                     "class": "form-control", 
+                    "min":"0",
                     "value": "1"
                     }
-                ),
-            
+                )
         }
 
     def __init__(self, *args, **kwargs):
