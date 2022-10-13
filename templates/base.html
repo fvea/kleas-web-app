@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'sales/add-sales.css' %}">
+
+    
     <title>Kleas</title>
 
     <!-- Bootstrap4 jsDelivr CSS -->
@@ -20,8 +25,6 @@
     {% block content %}
     {% endblock %}
     </div>
-
-    
     <!-- Bootstrap4 jsDelivr CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <!-- bootstrap-select compiled and minified JavaScript -->
