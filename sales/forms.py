@@ -14,15 +14,16 @@ class SaleForm(forms.ModelForm):
                     "id": "price-num-input", 
                     "class": "form-control", 
                     "value": "0.00",
-                    "min":"0"
+                    "min":"0",
+                    "required": True,
                     }
                 ),
             "quantity": forms.NumberInput(
                 attrs={
                     "id": "quantity-num-input", 
                     "class": "form-control", 
-                    "min":"0",
-                    "value": "1"
+                    "min":"1",
+                    "value": "1",
                 }
             ),
             "payment": forms.Select(
