@@ -5,7 +5,7 @@ from .models import Sale, Category, Item
 class SaleForm(forms.ModelForm):
     class Meta:
         model = Sale
-        fields = ('price', 'quantity', 'category', 'item')
+        fields = ('price', 'quantity', 'payment', 'category', 'item')
 
         # Sale Form HTML Widgets Reference
         widgets = {
@@ -25,6 +25,14 @@ class SaleForm(forms.ModelForm):
                     "value": "1"
                 }
             ),
+            "payment": forms.Select(
+                attrs={
+                    "id": "payment-dropdown",
+                    "class": "selectpicker show-tick",
+                    "title":"Select Payment",
+                },
+            ),
+
             "category": forms.Select(
                 attrs={
                     "id": "category-dropdown",
@@ -50,11 +58,13 @@ class SaleForm(forms.ModelForm):
         self.fields['item'].queryset = Item.objects.none()
 
         # remove the default "-------" in select fields
+        payment_choices = list(self.fields["payment"].choices)[1:]
         category_choices = list(self.fields["category"].choices)[1:]
         item_choices = list(self.fields["item"].choices)[1:]
+
+        self.fields["payment"].choices = payment_choices
         self.fields["category"].choices = category_choices
         self.fields["item"].choices = item_choices
-            
 
         if 'category' in self.data:
             try:
