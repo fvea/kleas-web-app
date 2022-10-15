@@ -9,3 +9,14 @@
     width: 320px;
     height: 100px;
 }
+
+.logo {
+    font-size: xx-large;
+    font-family: 'Inter', Arial;
+}
+
+.navbar_selection {
+    font-size: large;
+    text-align: end;
+    font-family: 'Inter', Arial;
+}
