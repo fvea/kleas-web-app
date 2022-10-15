@@ -12,8 +12,8 @@ class SaleForm(forms.ModelForm):
             "price": forms.NumberInput(
                 attrs={
                     "id": "price-num-input", 
-                    "class": "form-control", 
-                    "value": "0.00",
+                    "class": "form-control",
+                    "value":"0.00",
                     "min":"0",
                     "required": True,
                     }
@@ -31,6 +31,8 @@ class SaleForm(forms.ModelForm):
                     "id": "payment-dropdown",
                     "class": "selectpicker show-tick",
                     "title":"Select Payment",
+                    "data-width": "100%",
+                    "data-style" :"btn-outline-primary",
                 },
             ),
 
@@ -39,6 +41,8 @@ class SaleForm(forms.ModelForm):
                     "id": "category-dropdown",
                     "class": "selectpicker show-tick",
                     "title":"Select Category",
+                    "data-width": "100%",
+                    "data-style" :"btn-outline-primary",
                 },
             ),
             "item": forms.Select(
@@ -46,6 +50,8 @@ class SaleForm(forms.ModelForm):
                     "id": "item-dropdown",
                     "class": "selectpicker show-tick",
                     "title":"Select Item",
+                    "data-width": "100%",
+                    "data-style" :"btn-outline-primary",
                 },
             ),
         }
