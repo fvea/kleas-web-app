@@ -6,8 +6,15 @@
     background-color:#007CFF;
     color: #FFFFFF;
     border-radius: 0.5rem;
-    width: 320px;
-    height: 100px;
+}
+
+#quantity-num-input {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    background: #FFFFFF;
+    border-radius: 0.5rem;
+    border: #6FBAF7 solid;
+    text-align: center;
 }
 
 .logo {
