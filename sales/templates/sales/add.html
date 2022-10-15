@@ -1,36 +1,43 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-  <h2>Add Sale Transaction Form</h2>
+  <h2 class="text-dark ms-3 mt-5 m-4">Add Sales</h2>
 
-  <form method="post" id="saleForm" data-items-url="{% url 'sales:ajax_load_items' %}" novalidate>
+  <!-- Add Sale Transaction Form -->
+  <form method="post" id="saleForm" data-items-url="{% url 'sales:ajax_load_items' %}">
     {% csrf_token %}
-    
+
+    <!-- Sales Form Fields-->
     {% for field in form %}
-      <p class="price_txt">{{field.label_tag}}</p> {{field}}
+      <div class="form-group m-4">
+        <div>
+        {{ field.label_tag }}
+        </div>
+        {{ field }}
+      </div>
+      {% for error in field.errors %} 
+        <strong>{{ field.errors|escape }}</strong>
+      {% endfor %}
     {% endfor %}
 
-    <input type="submit" value="Save">
+    <!-- Cancel and Save Button -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <button type="reset" class="btn btn-secondary btn-lg border-0 btn-block" id="cancel-btn">Cancel</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary btn-lg border-0 btn-block" id="save-btn">Save</button>
+        </div>
+      </div>
+    </div>
+
   </form>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script>
-    $("#category-dropdown").change(function () {
-      var url = $("#saleForm").attr("data-items-url");  // get the url of the `load_items` view
-      var categoryId = $(this).val();                   // get the selected category ID from the HTML input
-
-      $.ajax({                                          // initialize an AJAX request
-        url: url,                                       // set the url of the request (= localhost:8000/hr/ajax/load-items/)
-        data: {
-          'category': categoryId                        // add the category id to the GET parameters
-        },
-        success: function (data) {                      // `data` is the return of the `load_items' view function
-          $("#item-dropdown").html(data);                     // replace the contents of the items input with the data that came from the server
-        }
-      });
-
-    });
-  </script>
+  <script src="{% static 'sales/js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'sales/js/category-item-chained-dropdown.js' %}" type="text/javascript"></script>
+  <script src="{% static 'sales/js/selectpicker-reset.js' %}" type="text/javascript"></script>
 
 {% endblock %}
