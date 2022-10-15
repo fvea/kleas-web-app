@@ -11,7 +11,7 @@ class SaleCreateView(CreateView):
     model = Sale
     form_class = SaleForm
     template_name = "sales/add.html"
-    success_url = reverse_lazy('sales:add')
+    success_url = reverse_lazy('sales:success')
 
 class SaleTransactions(ListView):
     model = Sale
@@ -19,8 +19,10 @@ class SaleTransactions(ListView):
     context_object_name = "sales"
 
 
-
 def load_items(request):
     category_id = request.GET.get('category')
     items = Item.objects.filter(category_id=category_id).order_by('item')
     return render(request, 'sales/item_options.html', context={'items': items})
+
+def success(request):
+    return render(request, 'sales/success.html')
