@@ -24,5 +24,4 @@ urlpatterns = [
 
     # home page
     path("", SaleCreateView.as_view(), name="add"),
-
 ]
