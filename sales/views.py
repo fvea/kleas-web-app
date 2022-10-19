@@ -1,3 +1,4 @@
+from typing import List
 from django.views.generic import ListView, CreateView, UpdateView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -10,10 +11,18 @@ class SaleCreateView(CreateView):
     model = Sale
     form_class = SaleForm
     template_name = "sales/add.html"
-    success_url = reverse_lazy('sales:add')
+    success_url = reverse_lazy('sales:success')
+
+class SaleTransactions(ListView):
+    model = Sale
+    template_name = "sales/transactions.html"
+    context_object_name = "sales"
+
 
 def load_items(request):
     category_id = request.GET.get('category')
     items = Item.objects.filter(category_id=category_id).order_by('item')
-    print(items)
     return render(request, 'sales/item_options.html', context={'items': items})
+
+def success(request):
+    return render(request, 'sales/success.html')
