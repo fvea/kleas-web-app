@@ -22,11 +22,6 @@ def add(request):
     else:
         return render(request, "sales/add.html")
 
-# class SaleCreateView(CreateView):
-#     model = Sale
-#     form_class = SaleForm
-#     template_name = "sales/add.html"
-#     success_url = reverse_lazy('sales:success')
 
 class SaleTransactions(ListView):
     model = Sale
