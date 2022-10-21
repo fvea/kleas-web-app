@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 {% load static %}
 
 {% block content %}
@@ -11,15 +11,15 @@
 
   <!-- Sales Form Fields-->
   {% for field in form %}
-  <div class="form-group m-4">
-    <div>
-      {{ field.label_tag }}
+    <div class="form-group m-4">
+      <div>
+        {{ field.label_tag }}
+      </div>
+      {{ field }}
     </div>
-    {{ field }}
-  </div>
-  {% for error in field.errors %}
-  <strong>{{ field.errors|escape }}</strong>
-  {% endfor %}
+    {% for error in field.errors %}
+    <strong>{{ field.errors|escape }}</strong>
+    {% endfor %}
   {% endfor %}
 
   <!-- Cancel and Save Button -->
